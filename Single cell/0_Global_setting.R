@@ -1,6 +1,7 @@
 # Part0：Global setting
+# To be modified：dir;
 rm(list=ls()); # Optional, remove all objects in the current environment when start a new project
-dir = "/work/chenfeilab/Olive/livermetastasis/data/all/1_qc"
+dir = "path/to/dir"
 Sys.setenv(LANGUAGE = "en"); # set the environment variable LANGUAGE to English
 options(stringsAsFactors = FALSE); # not convert strings to factors
 version # displays the version of the R software
