@@ -8,4 +8,8 @@ version # displays the version of the R software
 set.seed(1415926535) # set the random number generator seed
 setwd(dir) # set working directory
 getwd() # get working directory
-time = Sys.Date() # 
+Sys.Date() # get the present time
+library(future) # to create a multisession job 
+# too many cores and too large RAM will cause "fork: retry: No child processes"
+plan("multisession", workers = 12)
+options(future.globals.maxSize = 300000 * 1024^2)
