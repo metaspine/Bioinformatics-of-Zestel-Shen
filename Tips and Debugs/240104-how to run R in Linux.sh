@@ -31,4 +31,5 @@ sh test.sh
 
 ##3. libpath() related tips
 #1. do not change the ~/.Rprofile easily
-#2. .libpath("path/to/env/.../library")
+#2. libpath("path/to/env/.../library")
+#3. Do not download R packages twice in root's R and in your environment's R
