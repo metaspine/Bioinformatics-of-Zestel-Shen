@@ -28,3 +28,7 @@ path/to/Rscript path/to/test.R
 -----------------------------
 #3. run you shell script
 sh test.sh
+
+##3. libpath() related tips
+#1. do not change the ~/.Rprofile easily
+#2. .libpath("path/to/env/.../library")
