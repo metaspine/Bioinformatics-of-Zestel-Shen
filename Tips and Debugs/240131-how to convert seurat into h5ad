@@ -1,0 +1,31 @@
+# load libraries
+library(Seurat)
+library(tidyverse)
+library(Matrix)
+# Read RDS created in Seurat Video Tutorials--video 7
+# load rdata
+saving_path = "./" #change to your own pathway
+load("../merge_seurat.rdata")
+NML <- merge_seurat
+DimPlot(NML, reduction = "umap_harmony", label = TRUE)
+# write matrix data (gene expression counts)
+# counts_matrix <- GetAssayData(NML, assay='RNA', slot='counts') #Seurat v4
+counts_matrix_2 <- GetAssayData(NML, assay='RNA', layer='counts') #Seurat v5
+writeMM(counts_matrix, file=paste0(saving_path,"matrix.mtx"))
+# write gene names
+write.table(data.frame('gene'=rownames(counts_matrix)),
+            file=paste0(saving_path,"gene_names.csv"),
+            quote=F,row.names=F,col.names=F)
+view(NML@meta.data)
+## optional, if exists, then run
+# write dimensional reduction matrix (PCA)
+write.csv (NML@reductions$pca@cell.embeddings,
+           file=paste0(saving_path,"pca.csv"), quote=F, row.names=F)
+# save UMAP
+NML$UMAP_1 <- NML@reductions$umap_harmony@cell.embeddings[,1]
+NML$UMAP_2 <- NML@reductions$umap_harmony@cell.embeddings[,2]
+# must run
+# save metadata table:
+NML$barcode <- colnames(NML)
+write.csv(NML@meta.data, file=paste0(saving_path,"metadata.csv"),
+          quote=F, row.names=F)
