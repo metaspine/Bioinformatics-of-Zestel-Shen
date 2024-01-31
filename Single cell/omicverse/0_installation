@@ -1,0 +1,16 @@
+#Tutorial:https://omicverse.readthedocs.io/en/stable/Installation_guild/
+
+
+#1. Install conda. We typically use the mambaforge distribution. Use python>=3.8, conda consider using mamba instead of conda.
+#2. Create a new conda environment:
+conda create -n omicverse python=3.
+
+#3. Activate your environment:
+conda activate omicverse
+
+#4. Install PyTorch and PyG at first:
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+conda install pyg -c pyg
+
+#5. Install omicverse:
+conda install omicverse -c conda-forge
